@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos DOM (Documnent object model) on javascript</title>
+</head>
+<body>
+    <div id="Mensajes">Texto fijo</div>
+    <div id="Mensajes2" class="mensajeImportante">Mensaje 2</div>
+    <div id="Mensajes3" class="mensajeImportante">Mensaje 3</div>
+    <ul id="frutas">
+        <li>Manzanas</li>
+        <li>Platanos</li>
+        <li>Peras</li>
+        <li>Melones</li>
+    </ul>
+    <ol>
+        <li>Primavera</li>
+        <li>Verano</li>
+        <li>Otoño</li>
+        <li>Invierno</li>
+    </ol>
+    <script>
+        console.log(document.title);
+        console.log(document.doctype);
+        console.log(document.lastModified);
+        document.getElementById("Mensajes").innerText;
+        let divMensaje = document.getElementById("Mensajes");
+        if(divMensaje)
+            alert(divMensaje.innerText);
+
+            divMensaje.innerText+=" Modificado con js";
+        let losDivs= document.getElementsByTagName("div");
+        console.log("hay "+ losDivs.length +" divs en el documento...");
+        if(losDivs.length>0)
+            losDivs[0].innerHTML="Este esl primer div del doculemtn";
+    
+        let losDivsImportantes=document.getElementsByClassName("mensajeImportante");
+        console.log("hay "+losDivsImportantes.length+" divs importantes en el documento.........");
+
+        let frutas=document.getElementById("frutas");
+        frutas.innerHTML+="<li>Uvas</li><li>Naranja</li>";
+        frutas.innerHTML="";
+        let frutasDos=document.createElement("li");
+        frutasDos.innerHTML="Sandia";
+        frutas.appendChild(frutasDos);
+
+        let frutasTres=document.createElement("li");
+        frutasTres.innerHTML="Lichy";
+        frutas.appendChild(frutasTres);
+
+        frutas.childNodes.forEach(element => {
+            console.log(element.innerText);
+        });
+
+        frutas.childNodes.forEach(function(childNodes) {
+            console.log(childNodes.innerText);
+        });
+    </script>
+</body>
+</html>
