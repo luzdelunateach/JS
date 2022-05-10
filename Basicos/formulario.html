@@ -6,14 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
 </head>
-<body>
+<body style="background-color: rgb(158, 118, 158);">
     <form>
-        Nombre: <input type="text" id="nombre"> 
+        <label>Nombre:</label>
+        <input type="text" id="nombre"> 
         </br>
-        Edad: <input type="number" id="edad"> 
+        <label>Edad:</label>
+        <input type="number" id="edad"> 
         </br>
-        Ingreso: <input type="number" id="ingreso">
-        <button type="submit" id="btn-enviar" onclick="validar()">Enviar</button>
+        <label>Ingreso:</label>
+        <input type="number" id="ingreso">
+        </br>
+        <button type="button" id="btn-enviar" onclick="validar()">Enviar</button>
     </form>
     <script src="js/validar.js">
 

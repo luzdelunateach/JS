@@ -1,6 +1,5 @@
+var personas=[];
 function validar(){
-  let personas = [];
-  sessionStorage.setItem('personas',contenido);
   let nombre = document.getElementById('nombre').value;
   let edad = parseInt(document.getElementById('edad').value);
   let ingreso = parseInt(document.getElementById('ingreso').value);
