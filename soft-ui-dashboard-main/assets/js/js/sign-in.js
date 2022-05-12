@@ -1,8 +1,39 @@
 var btn=document.getElementById("singin");
-btn.addEventListener("click",singIn);
+//btn.addEventListener("click",singIn);
 var email=document.getElementById("email").value;
 var pass=document.getElementById("password").value;
 var content=document.getElementById("contentForm");
+
+function fetchAPI(e){
+    let url = "http://localhost:3005/users";
+    var email=document.getElementById("email").value;
+    var pass=document.getElementById("password").value;
+    let exist=false;
+    fetch(url)
+        .then((response)=>{
+            return response.json();
+        })
+        .then((data) =>{
+            let users = data.users;
+            users.forEach(u =>{
+                if(!exist){
+                    if((u.email==email)&&(u.password==pass)){
+                        content.innerHTML="<h2 class='font-weight-bolder text-info text-gradient'>WELCOME "+u.email+"!</h2>";
+                        exist=true;
+                    }
+                }
+            });
+
+            if(exist==false){
+                alert("The user do not exist");
+                window.location.reload();
+            }
+        })
+        .catch(function(error){
+            console.log("El servidor no esta disponible...");
+        });
+} 
+
 
 function singIn(e){
     let users = [];
@@ -24,7 +55,7 @@ function singIn(e){
     
     let search=users.findIndex(e => e.Email === email);
     if(search>=0){
-        alert(users[search].Password);
+        //alert(users[search].Password);
         if(users[search].Password!==pass){
             alert("Password is incorrect!")
             return;

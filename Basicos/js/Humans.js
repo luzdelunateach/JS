@@ -1,3 +1,4 @@
+//Sintaix 2015 Es6
 class Humans {
     constructor(name, age, gender) {
         this.name = name;
