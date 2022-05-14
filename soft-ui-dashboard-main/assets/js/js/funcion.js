@@ -17,6 +17,19 @@ $(document).ready(function () {
         }
     });
 
+    $("#btnProgrammer").on('click', function(){
+        $('tr').show();
+        $('tr').find('td:eq(1) > p:contains(Manager)').parent().parent().hide();
+    });
+
+    $("#btnManger").on('click', function(){
+        $('tr').show();
+        $('tr').find('td:eq(1) > p:contains(Programmer)').parent().parent().hide();
+    });
+
+    $("#btnAll").on('click', function(){
+        $('tr').show();
+    });
     
 });
 

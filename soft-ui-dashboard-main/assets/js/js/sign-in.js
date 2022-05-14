@@ -3,7 +3,9 @@ var btn=document.getElementById("singin");
 var email=document.getElementById("email").value;
 var pass=document.getElementById("password").value;
 var content=document.getElementById("contentForm");
-
+$(() => {
+    $("#newContainerForm").hide();
+});
 function fetchAPI(e){
     let url = "http://localhost:3005/users";
     var email=document.getElementById("email").value;
@@ -18,7 +20,10 @@ function fetchAPI(e){
             users.forEach(u =>{
                 if(!exist){
                     if((u.email==email)&&(u.password==pass)){
-                        content.innerHTML="<h2 class='font-weight-bolder text-info text-gradient'>WELCOME "+u.email+"!</h2>";
+                        $("#contentForm").hide();
+                        let content="<h2 class='font-weight-bolder text-info text-gradient'>WELCOME "+u.email+"!</h2>";
+                        $("#newContainerForm").toggle();
+                        $("#newContainerForm").html(content);
                         exist=true;
                     }
                 }
