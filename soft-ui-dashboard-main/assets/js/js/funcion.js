@@ -7,29 +7,77 @@ $(document).ready(function () {
             let html="";
             data.autor.forEach(function(x){
                 if(x.status=="Offline"){
-                    html+="<tr><td><div class='d-flex px-2 py-1'><div><img src='"+x.foto+"' class='avatar avatar-sm me-3' alt='user1'></div><div class='d-flex flex-column justify-content-center'><h6 class='mb-0 text-sm'>"+x.nombre+"</h6><p class='text-xs text-secondary mb-0'>"+x.correo+"</p></div></div></td><td><p class='text-xs font-weight-bold mb-0'>"+x.puesto+"</p><p class='text-xs text-secondary mb-0'>Organization</p></td><td class='align-middle text-center text-sm'><span class='badge badge-sm bg-gradient-secondary'>"+x.status+"</span></td><td class='align-middle text-center'><span class='text-secondary text-xs font-weight-bold'>"+x.fecha+"</span></td><td class='align-middle'><a href='javascript:;' class='text-secondary font-weight-bold text-xs' data-toggle='tooltip' data-original-title='Edit user'>Edit</a></td></tr>";
+                    html+="<tr><td><div class='d-flex px-2 py-1'><div><img src='"+x.foto+"' class='avatar avatar-sm me-3' alt='user1'></div><div class='d-flex flex-column justify-content-center'><h6 class='mb-0 text-sm'>"+x.nombre+"</h6><p class='text-xs text-secondary mb-0'>"+x.correo+"</p></div></div></td><td><p class='text-xs font-weight-bold mb-0 autor'>"+x.puesto+"</p><p class='text-xs text-secondary mb-0'>Organization</p></td><td class='align-middle text-center text-sm'><span class='badge badge-sm bg-gradient-secondary'>"+x.status+"</span></td><td class='align-middle text-center'><span class='text-secondary text-xs font-weight-bold'>"+x.fecha+"</span></td><td class='align-middle'><a href='javascript:;' class='text-secondary font-weight-bold text-xs' data-toggle='tooltip' data-original-title='Edit user'>Edit</a></td></tr>";
                 }else{
-                    html+="<tr><td><div class='d-flex px-2 py-1'><div><img src='"+x.foto+"' class='avatar avatar-sm me-3' alt='user1'></div><div class='d-flex flex-column justify-content-center'><h6 class='mb-0 text-sm'>"+x.nombre+"</h6><p class='text-xs text-secondary mb-0'>"+x.correo+"</p></div></div></td><td><p class='text-xs font-weight-bold mb-0'>"+x.puesto+"</p><p class='text-xs text-secondary mb-0'>Organization</p></td><td class='align-middle text-center text-sm'><span class='badge badge-sm bg-gradient-success'>"+x.status+"</span></td><td class='align-middle text-center'><span class='text-secondary text-xs font-weight-bold'>"+x.fecha+"</span></td><td class='align-middle'><a href='javascript:;' class='text-secondary font-weight-bold text-xs' data-toggle='tooltip' data-original-title='Edit user'>Edit</a></td></tr>";
+                    html+="<tr><td><div class='d-flex px-2 py-1'><div><img src='"+x.foto+"' class='avatar avatar-sm me-3' alt='user1'></div><div class='d-flex flex-column justify-content-center'><h6 class='mb-0 text-sm'>"+x.nombre+"</h6><p class='text-xs text-secondary mb-0'>"+x.correo+"</p></div></div></td><td><p class='text-xs font-weight-bold mb-0 autor'>"+x.puesto+"</p><p class='text-xs text-secondary mb-0'>Organization</p></td><td class='align-middle text-center text-sm'><span class='badge badge-sm bg-gradient-success'>"+x.status+"</span></td><td class='align-middle text-center'><span class='text-secondary text-xs font-weight-bold'>"+x.fecha+"</span></td><td class='align-middle'><a href='javascript:;' class='text-secondary font-weight-bold text-xs' data-toggle='tooltip' data-original-title='Edit user'>Edit</a></td></tr>";
                 }
             }); 
 
-            $("#tbody").html(html);
+            $('#tbody').html(html);
+            //$("#tbody").html(html);
         }
     });
 
+  
     $("#btnProgrammer").on('click', function(){
+        
+        const $firstPara=$('#tbody');
+        $firstPara.animate({
+            opacity: 'toggle',
+            height: 'toggle'
+            }, 'slow');
+
+        $firstPara.animate({
+                opacity: 'toggle',
+                height: 'toggle'
+                }, 'slow');
         $('tr').show();
         $('tr').find('td:eq(1) > p:contains(Manager)').parent().parent().hide();
+        
     });
 
     $("#btnManger").on('click', function(){
-        $('tr').show();
+        const $firstPara=$('#tbody');
+        $firstPara.animate({
+            opacity: 'toggle',
+            height: 'toggle'
+            }, 'slow');
+
+        $firstPara.animate({
+                opacity: 'toggle',
+                height: 'toggle'
+                }, 'slow');
+        $('tr').show();   
         $('tr').find('td:eq(1) > p:contains(Programmer)').parent().parent().hide();
     });
 
     $("#btnAll").on('click', function(){
-        $('tr').show();
+        const $firstPara=$('#tbody');
+        $firstPara.animate({
+            opacity: 'toggle',
+            height: 'toggle'
+            }, 'slow');
+            $firstPara.animate({
+                opacity: 'toggle',
+                height: 'toggle'
+                }, 'slow');
+            $('tr').show();
+    });    
+   
+
+});
+
+$(document).ajaxStop(function() {
+    $('td').hover(function(e) {
+        $(e.target).css('border-color','rgb(180, 11, 141)');
+    }, function(e) {
+        $(e.target).css('border-color','#353a3c');
+      });
+    
+    $('.autor').click((e)=>{
+        $(e.target).css('color','rgb(180, 11, 141)');
     });
+    
     
 });
 

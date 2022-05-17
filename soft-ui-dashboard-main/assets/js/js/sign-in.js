@@ -8,8 +8,8 @@ $(() => {
 });
 function fetchAPI(e){
     let url = "http://localhost:3005/users";
-    var email=document.getElementById("email").value;
-    var pass=document.getElementById("password").value;
+    var email=$("#email").val();
+    var pass=$("#password").val();
     let exist=false;
     fetch(url)
         .then((response)=>{
