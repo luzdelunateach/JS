@@ -34,10 +34,13 @@ mongo.connect(url,{
         return;
     }
     db=client.db("cursojavascript");
+    db2=client.db("angulardb");
     console.log("conentando a la bd");
     alumnos=db.collection("alumnos");
     autor=db.collection("autor");
     users=db.collection("users");
+    personas=db2.collection("personas");
+    vuelos=db2.collection("vuelos");
 });
 
 app.get("/users", (request,response)=>{
@@ -72,6 +75,36 @@ app.get("/alumnos", (request,response)=>{
     });
     //response.status(200).json({ok:true});
 });
+
+app.get("/personas", (request,response)=>{
+    console.log("Se ejecuto la ruta demo...");
+    //response.send("ok");
+    personas.find().toArray((err,items)=>{
+        if(err){
+            console.log(err);
+            reponse.status(500).json({err:err});
+            return;
+        }
+        response.status(200).json(items);
+        
+    });
+    //response.status(200).json({ok:true});
+});
+
+app.get("/vuelos", (request,response)=>{
+    console.log("Se ejecuto la ruta vuelos...");
+    //response.send("ok");
+    vuelos.find().toArray((err,items)=>{
+        if(err){
+            console.log(err);
+            reponse.status(500).json({err:err});
+            return;
+        }
+        response.status(200).json(items);
+    });
+    //response.status(200).json({ok:true});
+});
+
 app.get("/autor", (request,response)=>{
     console.log("Se ejecuto la ruta Autor...");
     autor.find().toArray((err,items)=>{
@@ -118,6 +151,43 @@ app.post("/alumnos", (request,response) => {
         response.status(200).json({ok:true});
     });
 });
+/*app.post("/vuelos", (request,response) => {
+    vuelos.insertOne({
+        numeroVuelo:request.body.numeroVuelo,        
+        fecha:request.body.fecha,
+        horario:request.body.horario,
+        origen:request.body.origen,
+        destino:request.body.destino
+    },
+    (err, result) => {
+        if(err){
+            console.log(err);
+            reponse.status(500).json({err:err});
+            return;
+        }
+        response.status(200).json({ok:true});
+    });
+});*/
+
+app.post("/vuelos", (request,response) => {
+    vuelos.insertOne({
+      numeroVuelo:request.body.numeroVuelo,  
+      origen:request.body.origen,  
+      destino:request.body.destino,   
+      fecha:request.body.fecha,
+      horario:request.body.horario,
+    },
+    (err, result) => {
+        if(err){
+            console.log(err);
+            reponse.status(500).json({err:err});
+            return;
+        }
+        response.status(200).json({ok:true});
+    });
+  });
+
+  
 let ObjectId = require('mongodb').ObjectId; //genenrar una variable de funcion que viene incluida en mongodb
 app.get("/alumnos/:id", (request,response) => {
     let alumnoId=request.params.id;

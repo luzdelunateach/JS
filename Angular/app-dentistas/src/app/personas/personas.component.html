@@ -1,0 +1,21 @@
+<div class="container">
+<h1 class="mb-3">Personas</h1>
+<table class="table table-hover">
+  <thead>
+    <tr class="table-primary">
+      <th>No.</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Ciudad</th>
+      <th>Moneda</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let persona of personas|sort:'ciudad':'asc'; index as myIndex">
+      <td><a [routerLink]="['detallepersonas',persona.id,'abc']">{{persona.id}}</a></td>
+      <td>{{persona.nombre | uppercase}}</td><td>{{persona.apellido | slice:0:4}}</td>
+      <td>{{persona.ciudad |uppercase}}</td><td>{{persona.moneda |currency:'EUR'}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>

@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'My second angular app';
+  public title = 'My second angular app';
   developer = 'Luz de luna Gutierrez';
+  private demoIntellisense = "Prueba";
 }
