@@ -23,7 +23,7 @@ app.crossOriginIsolated=true;
 
 const url="mongodb://localhost:27017";
 
-let db, alumnos, autor, users
+let db, alumnos, autor, users, user
 mongo.connect(url,{
    useNewUrlParser:true,
    useUnifiedTopology:true 
@@ -35,12 +35,14 @@ mongo.connect(url,{
     }
     db=client.db("cursojavascript");
     db2=client.db("angulardb");
+    db3=client.db("adminpro")
     console.log("conentando a la bd");
     alumnos=db.collection("alumnos");
     autor=db.collection("autor");
     users=db.collection("users");
     personas=db2.collection("personas");
     vuelos=db2.collection("vuelos");
+    user=db3.collection("users");
 });
 
 app.get("/users", (request,response)=>{
@@ -126,6 +128,35 @@ app.post("/autor",(request,response)=>{
             puesto:request.body.puesto,
             fecha:request.body.fecha,
             status:request.body.status
+        },
+        (err,result)=>{
+            if(err){
+                console.log(err);
+                reponse.status(500).json({error:err});
+            }
+            response.status(200).json({ok:true});
+        });
+});
+
+//USARIOS ADMINPRO
+app.get("/user", (request,response)=>{
+    console.log("Se ejecuto la ruta Autor...");
+    user.find().toArray((err,items)=>{
+        if(err){
+            console.log(err);
+            reponse.status(500).json({err:err});
+            return;
+        }
+        response.status(200).json(items);
+        
+    });
+});
+
+app.post("/user",(request,response)=>{
+    user.insertOne({
+            name:request.body.name,
+            email:request.body.email,
+            password:request.body.password
         },
         (err,result)=>{
             if(err){
