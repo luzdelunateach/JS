@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {RegisterComponent } from './register.component';
-
+import { RouterModule, Routes } from '@angular/router';
 
 
 @NgModule({
@@ -14,7 +14,8 @@ import {RegisterComponent } from './register.component';
   imports: [
     CommonModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   exports:[
     RegisterComponent

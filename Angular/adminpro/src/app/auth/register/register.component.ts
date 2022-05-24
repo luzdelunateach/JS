@@ -18,17 +18,56 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(){
-    if(this.register.password==this.register.vpassword){
-      let vregistrar=this.register;
-      this.registerService.setRegister(vregistrar).subscribe(
-        vregistrar=>{
-          console.log(vregistrar);
-        }
-      );
-      this.registers.push(vregistrar);
-      this.router.navigate(['/dashboard']);
+    let valid:boolean = true;
+    console.log(this.register);
+    if(this.register.name==""){
+      let val=document.getElementById("nameV");
+      val.classList.remove("invalid-feedback");
+      val.classList.add("needs-validation", "text-danger");
+      valid = false;
     }else{
-      var msj=document.getElementById("passwordValidation");
+      let val=document.getElementById("nameV");
+      val.classList.remove("needs-validation", "text-danger");
+      val.classList.add("invalid-feedback");
+    }
+
+    if(this.register.email==""){
+      let val=document.getElementById("emailV");
+      val.classList.remove("invalid-feedback");
+      val.classList.add("needs-validation","text-danger");
+      valid = false;
+    }else{
+      let val=document.getElementById("emailV");
+      val.classList.remove("needs-validation","text-danger");
+      val.classList.add("invalid-feedback");
+    }
+
+    if(this.register.password==""){
+      let val=document.getElementById("passwordV");
+      val.classList.remove("invalid-feedback");
+      val.classList.add("needs-validation","text-danger");
+      valid = false;
+    }else{
+      let val=document.getElementById("passwordV");
+      val.classList.remove("needs-validation","text-danger");
+      val.classList.add("invalid-feedback");
+    }
+
+    if(this.register.password==this.register.vpassword){
+
+      if(valid){
+        let vregistrar=this.register;
+        this.registerService.setRegister(vregistrar).subscribe(
+          vregistrar=>{
+            console.log(vregistrar);
+          }
+        );
+        this.registers.push(vregistrar);
+        this.router.navigate(['/dashboard']);
+      }
+
+    }else{
+      var msj=document.getElementById("passwordTwoV");
       msj.classList.remove("invalid-feedback");
       msj.classList.add("needs-validation")
     }

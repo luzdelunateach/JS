@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
   public users:Register[]=[];
   login:Login={email:"",password:""}
 
@@ -20,14 +21,37 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-
-    let resp=this.users.find(x=>x.email==this.login.email && x.password==this.login.password);
-    console.log(resp);
-    if(resp!=null){
-      this.router.navigate(['/dashboard']);
+    let valid:boolean=true;
+    if(this.login.email==""){
+      let val=document.getElementById("emailV");
+      val.classList.remove("invalid-feedback");
+      val.classList.add("needs-validation","text-danger");
+      valid = false;
     }else{
-      //this.router.navigate(['/register']);
-      alert("Account does not exist");
+      let val=document.getElementById("emailV");
+      val.classList.remove("needs-validation","text-danger");
+      val.classList.add("invalid-feedback");
+    }
+
+    if(this.login.password==""){
+      let val=document.getElementById("passwordV");
+      val.classList.remove("invalid-feedback");
+      val.classList.add("needs-validation","text-danger");
+      valid = false;
+    }else{
+      let val=document.getElementById("passwordV");
+      val.classList.remove("needs-validation","text-danger");
+      val.classList.add("invalid-feedback");
+    }
+    if(valid){
+      let resp=this.users.find(x=>x.email==this.login.email && x.password==this.login.password);
+      console.log(resp);
+      if(resp!=null){
+        this.router.navigate(['/dashboard']);
+      }else{
+        //this.router.navigate(['/register']);
+        alert("Account does not exist");
+      }
     }
   }
 

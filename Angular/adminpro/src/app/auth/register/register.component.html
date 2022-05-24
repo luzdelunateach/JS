@@ -11,22 +11,31 @@
                       <div class="col-xs-12">
                           <input class="form-control" type="text" name="name" required placeholder="Name" [(ngModel)]="register.name">
                       </div>
+                      <div id="nameV" class="invalid-feedback">
+                        Name is Required
+                      </div>
                   </div>
                   <div class="form-group ">
                       <div class="col-xs-12">
                           <input class="form-control" type="text" name="email" required placeholder="Email" [(ngModel)]="register.email">
+                      </div>
+                      <div id="emailV" class="invalid-feedback">
+                        Email is Required
                       </div>
                   </div>
                   <div class="form-group ">
                       <div class="col-xs-12">
                           <input class="form-control" type="password" name="password" required placeholder="Password" [(ngModel)]="register.password">
                       </div>
+                      <div id="passwordV" class="invalid-feedback">
+                        Password is Required
+                      </div>
                   </div>
                   <div class="form-group">
                       <div class="col-xs-12">
                           <input class="form-control" type="password" name="vpassword" required placeholder="Confirm Password" [(ngModel)]="register.vpassword">
                       </div>
-                      <div id="passwordValidation" class="invalid-feedback">
+                      <div id="passwordTwoV" class="invalid-feedback">
                         Password don't match
                       </div>
                   </div>
@@ -45,13 +54,14 @@
                   </div>
                   <div class="form-group m-b-0">
                       <div class="col-sm-12 text-center">
-                          <p>Already have an account? <a href="pages-login-2.html" class="text-info m-l-5"><b>Sign In</b></a></p>
+                          <p>Already have an account? <a routerLink="/login" class="text-info m-l-5"><b>Sign In</b></a></p>
                       </div>
                   </div>
               </form>
           </div>
       </div>
   </section>
+  <router-outlet></router-outlet>
   <!-- ============================================================== -->
   <!-- End Wrapper -->
   <!-- ============================================================== -->

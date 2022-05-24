@@ -7,10 +7,16 @@
                       <div class="col-xs-12">
                           <input class="form-control" type="text" required placeholder="Username" name="email" [(ngModel)]="login.email">
                       </div>
+                      <div id="emailV" class="invalid-feedback">
+                        Email is Required
+                      </div>
                   </div>
                   <div class="form-group">
                       <div class="col-xs-12">
                           <input class="form-control" type="password" required placeholder="Password" name="password" [(ngModel)]="login.password">
+                      </div>
+                      <div id="passwordV" class="invalid-feedback">
+                        Password is Required
                       </div>
                   </div>
                   <div class="form-group row">
@@ -33,7 +39,7 @@
                   </div>
                   <div class="form-group m-b-0">
                       <div class="col-sm-12 text-center">
-                          Don't have an account? <a href="pages-register2.html" class="text-primary m-l-5"><b>Sign Up</b></a>
+                          Don't have an account? <a routerLink="/register" class="text-primary m-l-5"><b>Sign Up</b></a>
                       </div>
                   </div>
               </form>
@@ -58,7 +64,7 @@
           </div>
       </div>
   </section>
-
+<router-outlet></router-outlet>
   <!--Custom JavaScript -->
   <script type="text/javascript">
     $(function() {
