@@ -60,7 +60,7 @@ export default {
   },
   watch: {
     $props:{
-      handler(){
+      handler: function(newVal, oldVal){
         console.log("Realizando operacion...");
         this.calculaOperacion();
       },

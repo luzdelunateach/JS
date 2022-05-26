@@ -7,6 +7,15 @@
 </template>
 <script>
 export default {
+  beforeCreate(){
+    console.log('Before create...');
+  },
+  created(){
+    console.log('created...');
+  },
+  beforeMount(){
+    console.log('Before Mount');
+  },
   mounted(){ // MOUNTED es para en cuanto se monte el elemento 
     this.calculaCaracteres();
   },
