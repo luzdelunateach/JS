@@ -1,5 +1,11 @@
 <template>
   <div id="app">
+   <router-view/>
+  </div>
+</template>
+
+<!--<template>
+  <div id="app">
     <div id="main-wrapper">
       <HeaderComponent />
       <SideBarComponent />
@@ -24,20 +30,26 @@
       </div>
     </div>
   </div>
-</template>
+</template>-->
 
 <script>
-import HeaderComponent from "./components/shared/Header-Component.vue";
+/*import HeaderComponent from "./components/shared/Header-Component.vue";
 import SideBarComponent from "./components/shared/SideBar-Component.vue";
 import BreadcrumbsComponent from "./components/shared/Breadcrumbs-Component.vue";
+import PagesComponentVue from "./components/Pages-Component.vue";*/
+//import PagesComponent from "./components/Pages-Component.vue";
+//import LoginComponent from "./components/auth/Login-Component.vue";
 
 export default {
   name: "App",
   components: {
-    HeaderComponent,
+    /*HeaderComponent,
     SideBarComponent,
     BreadcrumbsComponent,
-  },
+    PagesComponentVue,
+    PagesComponent
+    LoginComponent*/
+},
 };
 </script>
 

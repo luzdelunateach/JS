@@ -273,8 +273,8 @@
                           <li role="separator" class="divider"></li>
                           <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
                           <li role="separator" class="divider"></li>
-                          <!--<li><router-link to="/login"> Logout</router-link></li>-->
-                          <li><a href="../auth/Login-Component.vue">Logout</a></li>
+                          <li><router-link to="/login"> Logout</router-link></li>
+                          <!--<li><a href="../auth/Login-Component.vue">Logout</a></li>-->
                       </ul>
                   </div>
               </li>

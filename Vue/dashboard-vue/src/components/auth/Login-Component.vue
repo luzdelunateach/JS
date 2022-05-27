@@ -1,11 +1,5 @@
 <template>
-  <section
-    id="wrapper"
-    class="login-register login-sidebar"
-    style="
-      background-image: url(../../../public/assets//images/background/login-register.jpg);
-    "
-  >
+  <section id="wrapper" class="login-register login-sidebar" style="background-image: url(/assets/images/background/login-register.jpg);">
     <div class="login-box card">
       <div class="card-body">
         <form
@@ -16,9 +10,9 @@
         >
           <a href="javascript:void(0)" class="text-center db"
             ><img
-              src="../../../public/assets//images/logo-icon.png"
+              src="/assets/images/logo-icon.png"
               alt="Home" /><br /><img
-              src="../../../public/assets//images/logo-text.png"
+              src="/assets/images/logo-text.png"
               alt="Home"
           /></a>
           <div class="form-group m-t-40">

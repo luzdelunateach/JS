@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import ClientesComponent from '../src/components/Clientes-Component';
 import FacturasComponent from '../src/components/Facturas-Component';
 
 Vue.use(VueRouter);
@@ -9,7 +8,8 @@ export const routes = [
     {
     path: '/clientes',
     name: 'clientes',
-    component: ClientesComponent
+    component: () => import('../src/components/Clientes-Component')
+    //component: ClientesComponent
     },
     {
         path: '/facturas',
